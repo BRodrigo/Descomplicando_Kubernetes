@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+    fruta: banana
+  name: nginx-deployment
+  namespace: giropops
+spec:
+  replicas: 24
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0 #Pode ter até 1 pod a mais do que eu pedi no arquivo
+      maxUnavailable: 1 #Nesse caso irá atualizar de 2 em 2 pods
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - image: nginx
+        name: giropops
+        resources:
+          limits:
+            cpu: 0.5
+            memory: 128Mi
+          requests:
+            cpu: 0.3
+            memory: 64Mi
+      - image: ubuntu
+        name: ubuntu
+        args:
+        - sleep
+        - infinity
+        resources:
+          limits:
+            cpu: 0.5
+            memory: 128Mi
+          requests:
+            cpu: 0.3
+            memory: 64Mi

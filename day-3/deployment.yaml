@@ -26,10 +26,10 @@ spec:
         name: giropops
         resources:
           limits:
-            cpu: 0.5
+            cpu: "0.5"
             memory: 128Mi
           requests:
-            cpu: 0.3
+            cpu: "0.3"
             memory: 64Mi
       - image: ubuntu
         name: ubuntu
@@ -38,8 +38,8 @@ spec:
         - infinity
         resources:
           limits:
-            cpu: 0.5
+            cpu: "0.5"
             memory: 128Mi
           requests:
-            cpu: 0.3
+            cpu: "0.3"
             memory: 64Mi
